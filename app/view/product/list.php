@@ -11,9 +11,9 @@
     <tr><th>Nome</th><th>Descrição</th><th>Preço</th><th></th></tr></thead>
     <?php foreach ($model->listAllProducts() as $produto):?>
         <tr>
-            <th><?=$produto["nome"]?></th>
-            <td><?=$produto["descricao"]?></td>
-            <td><?=$produto["preco"]?></td>
+            <th><?=$produto["name"]?></th>
+            <td><?=$produto["description"]?></td>
+            <td><?=$produto["price"]?></td>
             <td class="col-md-1 text-center">
                 <a href="#?id=<?=$produto['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
