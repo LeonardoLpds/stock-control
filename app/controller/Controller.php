@@ -5,14 +5,14 @@ use app\model;
 class Controller
 {
     //Properties
-    private $view;
     private $model;
+    private $action;
     
     //Construct
     function __construct()
     {
         $urlParams = explode("/", substr($_SERVER['REQUEST_URI'], 1));
-        $this->view = isset($urlParams[0]) ? $urlParams[0] : "home";
-        $this->model = isset($urlParams[1]) ? $urlParams[1] : null;
+        $this->model = isset($urlParams[0]) ? $urlParams[0] : null;
+        $this->action = isset($urlParams[1]) ? $urlParams[1] : null;
     }
 }
