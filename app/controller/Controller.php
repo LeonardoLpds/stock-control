@@ -1,7 +1,5 @@
 <?php
 namespace app\controller;
-
-use app\model;
 use app\view\View;
 
 
@@ -27,6 +25,17 @@ class Controller
         $this->view = new View();
         $path = isset($this->model) ? $this->model : "";
         $page = isset($this->action) ? $this->action : "home";
-        $this->view->constructView($path . DIRECTORY_SEPARATOR . $page);
+        $object = $this->constructObject($this->model);
+        
+        $this->view->constructView($path . DIRECTORY_SEPARATOR . $page, $object);
+    }
+
+    private function constructObject($class = null){
+        if (isset($class) && !empty($class)) {
+            $class = "app\\model\\".ucfirst($class);
+            $object = new $class();
+            return $object;
+        }
+        return null;
     }
 }

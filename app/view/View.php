@@ -11,7 +11,7 @@ class View
     {
     }
 
-    public function constructView($view)
+    public function constructView($view, $model)
     {
         include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . self::HEADER;
         include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . $view . '.php';
