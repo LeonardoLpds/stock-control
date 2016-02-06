@@ -1,5 +1,6 @@
 <?php
 namespace app\model;
+use PDO;
 
 /**
 * Class to connect on database
