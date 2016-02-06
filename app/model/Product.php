@@ -9,4 +9,9 @@ class Product
     {
         $this->dataBase = new Database();
     }
+
+    public function listAllProducts()
+    {
+        return $this->dataBase->listAll("product");
+    }
 }
