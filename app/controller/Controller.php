@@ -14,10 +14,28 @@ class Controller
     function __construct()
     {
         $urlParams = explode("/", substr($_SERVER['REQUEST_URI'], 1));
+        
+        if ($this->isControllerRequest($urlParams[0])) {
+            new ObjectsController();
+            return true;
+        }
+        
+        $this->getParameters($urlParams);
+        $this->constructPage();
+    }
+
+    private function isControllerRequest($param)
+    {
+        if (strtolower($param) == "controller") {            
+            return true;
+        }
+        return false;
+    }
+
+    private function getParameters($urlParams)
+    {
         $this->model = isset($urlParams[0]) ? $urlParams[0] : null;
         $this->action = isset($urlParams[1]) ? $urlParams[1] : null;
-        
-        $this->constructPage();
     }
 
     private function constructPage()
