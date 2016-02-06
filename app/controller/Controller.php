@@ -25,8 +25,8 @@ class Controller
     private function constructPage()
     {
         $this->view = new View();
-        $path = isset($this->model) ? $this->model : "/";
+        $path = isset($this->model) ? $this->model : "";
         $page = isset($this->action) ? $this->action : "home";
-        $this->view->constructView($path.DIRECTORY_SEPARATOR.$page);
+        $this->view->constructView($path . DIRECTORY_SEPARATOR . $page);
     }
 }

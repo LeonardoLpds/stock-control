@@ -3,8 +3,9 @@ namespace app\view;
 
 class View
 {
-    const HEADER = "/blocks/header.php";
-    const FOOTER = "/blocks/footer.php";
+    const VIEW_PATH = __DIR__;
+    const HEADER = "blocks/header.php";
+    const FOOTER = "blocks/footer.php";
 
     function __construct()
     {
@@ -12,8 +13,8 @@ class View
 
     public function constructView($view)
     {
-        include_once __DIR__ . DIRECTORY_SEPARATOR . self::HEADER;
-        include_once __DIR__ . DIRECTORY_SEPARATOR . $view . '.php';
-        include_once __DIR__ . DIRECTORY_SEPARATOR . self::FOOTER;
+        include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . self::HEADER;
+        include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . $view . '.php';
+        include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . self::FOOTER;
     }
 }
