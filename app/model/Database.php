@@ -34,4 +34,9 @@ class Database
             echo 'Connection failed: ' . $e->getMessage();
         }
     }
+
+    public function listAll($table)
+    {
+        return $this->pdo->query("SELECT * FROM {$table}");
+    }
 }
