@@ -39,4 +39,43 @@ class Database
     {
         return $this->pdo->query("SELECT * FROM {$table}");
     }
+
+    public function create($fieldsAndValues, $table)
+    {
+        if (empty($fieldsAndValues) || empty($table)) {
+            return false;
+        }
+
+        $fields = "(";
+        $valuesNames = "(";
+
+        $keys = array_keys($fieldsAndValues);
+        foreach ($fieldsAndValues as $field => $value) {
+            if (end($keys) == $field){
+                $fields .= "$field)";
+                $valuesNames .= ":$field)";
+            }else{
+                $fields .= "$field, ";
+                $valuesNames .= ":$field, ";
+            }
+        }
+
+        $insert = $this->pdo->prepare(
+            "INSERT INTO $table $fields 
+            VALUES $valuesNames"
+        );
+
+        foreach ($fieldsAndValues as $key => $value) {
+            $insert->bindValue(":$key", $value);
+        }
+
+        try{
+            $insert->execute();
+            return true;
+        }
+        catch (PDOException $e) {
+            print "Error!: " . $e->getMessage();
+            return false;
+        }
+    }
 }
