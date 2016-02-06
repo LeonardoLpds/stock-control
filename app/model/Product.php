@@ -26,4 +26,16 @@ class Product
         $id = $_GET["id"];
         return $this->dataBase->delete($id, "product");
     }
+
+    public function selectProduct($id)
+    {
+        return $this->dataBase->select($id, "product");
+    }
+
+    public function edit()
+    {
+        $id = $_GET["id"];
+        $fields = array('name' => $_POST['name'], 'description' => $_POST['description'], 'price' => $_POST['price']);
+        return $this->dataBase->edit($id, $fields, "product");
+    }
 }

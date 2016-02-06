@@ -35,6 +35,11 @@ class Database
         }
     }
 
+    public function select($id, $table)
+    {
+        return $this->pdo->query("SELECT * FROM {$table} WHERE id = {$id}");
+    }
+
     public function listAll($table)
     {
         return $this->pdo->query("SELECT * FROM {$table}");
@@ -42,10 +47,6 @@ class Database
 
     public function create($fieldsAndValues, $table)
     {
-        if (empty($fieldsAndValues) || empty($table)) {
-            return false;
-        }
-
         $fields = "(";
         $valuesNames = "(";
 
@@ -85,6 +86,39 @@ class Database
         $result->bindParam(':id', $id);
         try{
             $result->execute();
+            return true;
+        }
+        catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            return false;
+        }
+    }
+
+    public function edit($id, $fieldsAndValues, $table)
+    {
+        $fields = "";
+
+        $keys = array_keys($fieldsAndValues);
+        foreach ($fieldsAndValues as $field => $value) {
+            if (end($keys) == $field){
+                $fields .= "$field = :$field";
+            }else{
+                $fields .= "$field = :$field, ";
+            }
+        }
+
+        $edit = $this->pdo->prepare(
+            "UPDATE $table SET $fields
+            WHERE id = :id"
+        );
+
+        foreach ($fieldsAndValues as $key => $value) {
+            $edit->bindValue(":$key", $value);
+        }
+        $edit->bindParam(':id', $id);
+
+        try{
+            $edit->execute();
             return true;
         }
         catch (PDOException $e) {
