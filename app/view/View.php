@@ -13,6 +13,11 @@ class View
 
     public function constructView($view, $model)
     {
+        if (strpos($view, "?")) {
+            $param = strstr($view, "?");
+            $param = explode("=", $param);
+            $view = strstr($view, "?", true);
+        }
         include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . self::HEADER;
         include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . $view . '.php';
         include_once self::VIEW_PATH . DIRECTORY_SEPARATOR . self::FOOTER;

@@ -15,7 +15,7 @@
             <td><?=$product["description"]?></td>
             <td><?=$product["price"]?></td>
             <td class="col-md-1 text-center">
-                <a href="#?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
+                <a href="/product/edit?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </a>
                 <a href="/controller/product/delete?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Excluir">
