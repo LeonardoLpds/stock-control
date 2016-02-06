@@ -32,6 +32,9 @@ class ObjectsController
     private function callFunction($object, $function)
     {
         if ((isset($object) && !empty($object)) && (isset($function) && !empty($function))) {
+            if (strpos($function, "?")) {
+                $function = strstr($function, "?", true);
+            }
             return $object->$function();
         }
     }

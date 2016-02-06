@@ -20,4 +20,10 @@ class Product
         $fields = array('name' => $_POST['name'], 'description' => $_POST['description'], 'price' => $_POST['price']);
         return $this->dataBase->create($fields, "product");
     }
+
+    public function delete()
+    {
+        $id = $_GET["id"];
+        return $this->dataBase->delete($id, "product");
+    }
 }

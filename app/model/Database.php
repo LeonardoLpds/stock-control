@@ -78,4 +78,18 @@ class Database
             return false;
         }
     }
+
+    public function delete($id, $table)
+    {
+        $result = $this->pdo->prepare("DELETE FROM $table WHERE id = :id");
+        $result->bindParam(':id', $id);
+        try{
+            $result->execute();
+            return true;
+        }
+        catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            return false;
+        }
+    }
 }
