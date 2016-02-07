@@ -21,9 +21,6 @@
                 <a href="/controller/product/delete?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Excluir">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </a>
-                <a href="#?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Fazer Pedido">
-                    <span class="glyphicon glyphicon-paste" aria-hidden="true"></span>
-                </a>
             </td>
         </tr>
     <?php endforeach;?>
