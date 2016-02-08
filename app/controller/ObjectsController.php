@@ -18,7 +18,7 @@ class ObjectsController
         $this->action = isset($urlParams[2]) ? $urlParams[2] : null;
         $this->object = $this->crateObject($this->class);
         if($this->callFunction($this->object, $this->action)){
-            header("Location: /".$urlParams[1]."/list");
+            header("Location: /".SITE_PATH.$urlParams[1]."/list");
         }
     }
 
