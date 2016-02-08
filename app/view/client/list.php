@@ -1,6 +1,6 @@
 <div class="page-header">
     <h1>Clientes
-        <a class="btn btn-success pull-right" href="/client/create" role="button">
+        <a class="btn btn-success pull-right" href="/<?=SITE_PATH?>client/create" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Cliente
         </a>
     </h1>
@@ -15,10 +15,10 @@
             <td><?=$client["email"]?></td>
             <td><?=$client["phone"]?></td>
             <td class="col-md-1 text-center">
-                <a href="/client/edit?id=<?=$client['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
+                <a href="/<?=SITE_PATH?>client/edit?id=<?=$client['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </a>
-                <a href="/controller/client/delete?id=<?=$client['id']?>" data-toggle="tooltip" data-placement="top" title="Excluir">
+                <a href="/<?=SITE_PATH?>controller/client/delete?id=<?=$client['id']?>" data-toggle="tooltip" data-placement="top" title="Excluir">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </a>
             </td>

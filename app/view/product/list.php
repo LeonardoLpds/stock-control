@@ -1,6 +1,6 @@
 <div class="page-header">
     <h1>Produtos
-        <a class="btn btn-success pull-right" href="/product/create" role="button">
+        <a class="btn btn-success pull-right" href="/<?=SITE_PATH?>product/create" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Produto
         </a>
     </h1>
@@ -15,10 +15,10 @@
             <td><?=$product["description"]?></td>
             <td><?=$product["price"]?></td>
             <td class="col-md-1 text-center">
-                <a href="/product/edit?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
+                <a href="/<?=SITE_PATH?>product/edit?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Editar">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </a>
-                <a href="/controller/product/delete?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Excluir">
+                <a href="/<?=SITE_PATH?>controller/product/delete?id=<?=$product['id']?>" data-toggle="tooltip" data-placement="top" title="Excluir">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </a>
             </td>

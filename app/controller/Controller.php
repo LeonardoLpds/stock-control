@@ -13,7 +13,8 @@ class Controller
     //Construct
     function __construct()
     {
-        $urlParams = explode("/", substr($_SERVER['REQUEST_URI'], 1));
+        $siteUrl = str_replace("/".SITE_PATH, "/", $_SERVER['REQUEST_URI']);
+        $urlParams = explode("/", substr($siteUrl, 1));
         
         if ($this->isControllerRequest($urlParams[0])) {
             new ObjectsController();

@@ -11,7 +11,9 @@ class ObjectsController
     //Construct
     function __construct()
     {
-        $urlParams = explode("/", substr($_SERVER['REQUEST_URI'], 1));
+        $siteUrl = str_replace("/".SITE_PATH, "/", $_SERVER['REQUEST_URI']);
+        $urlParams = explode("/", substr($siteUrl, 1));
+        
         $this->class = isset($urlParams[1]) ? "\\app\\model\\".ucfirst($urlParams[1]) : null;
         $this->action = isset($urlParams[2]) ? $urlParams[2] : null;
         $this->object = $this->crateObject($this->class);
