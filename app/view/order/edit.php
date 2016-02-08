@@ -4,7 +4,7 @@ $order = $model->selectOrder($param[1])->fetch();
 <div class="page-header">
   <h1>Editar um pedido</h1>
 </div>
-<form class="form-horizontal" action="/controller/order/edit?id=<?=$param[1]?>" method="post">
+<form class="form-horizontal" action="/<?=SITE_PATH?>controller/order/edit?id=<?=$param[1]?>" method="post">
   <div class="form-group">
     <label for="id_product" class="col-sm-2 control-label">Produto</label>
     <div class="col-sm-8">
