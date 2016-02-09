@@ -8,12 +8,6 @@ use PDO;
 */
 class Database
 {
-    //Define connection constants
-    const HOST = "localhost";
-    const DATABASE = "stock-control";
-    const USER = "root";
-    const PASS = "root";
-
     //Properties
     private $pdo;
 
@@ -27,7 +21,7 @@ class Database
     private function startPDOConnection()
     {
         try{
-            $this->pdo = new PDO('mysql:host='.self::HOST.';'.'dbname='.self::DATABASE.';', self::USER, self::PASS);
+            $this->pdo = new PDO('mysql:host='.DATABASE_HOST.';'.'dbname='.DATABASE_NAME.';', DATABASE_USER, DATABASE_PASS);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(PDOException $e) {
